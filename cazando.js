@@ -1,16 +1,31 @@
 let canvas=document.getElementById("areaJuego");
 let ctx=canvas.getContext("2d");
 
-// 2. Definir el tamaño del rectángulo
-const anchoRect = 200;
-const altoRect = 100;
+const ALTO_GATO = 100;
+const ANCHO_GATO = 200;
+const ALTO_COMIDA = 80;
+const ANCHO_COMIDA= 80;
 
-// 3. Calcular la posición X e Y exacta para el centro
-const x = (canvas.width / 2) - (anchoRect / 2);
-const y = (canvas.height / 2) - (altoRect / 2);
+let gatoX = (canvas.width / 2) - (ANCHO_GATO / 2);
+let gatoY = (canvas.height / 2) - (ALTO_GATO / 2);
+let comidaX = canvas.width - ANCHO_COMIDA;;
+let comidaY = canvas.height - ALTO_COMIDA;
+
+
 
 // 4. Dibujar el rectángulo
-function graficarGato (){
+function graficarGato(){
     ctx.fillStyle="#f47fb9";
-    ctx.fillRect(x, y, anchoRect, altoRect);
+    ctx.fillRect(gatoX, gatoY, ANCHO_GATO, ALTO_GATO);
+}
+
+//5. Dibujar el cuadrado
+function graficarComida(){
+    ctx.fillStyle="#7fc9f4";
+    ctx.fillRect(comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA);
+}
+
+function iniciarJuego(){
+    graficarGato();
+    graficarComida();
 }
