@@ -39,22 +39,57 @@ function moverIzquierda(){
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
 }
 function moverDerecha(){
     gatoX=gatoX+10;
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
 }
 function moverArriba(){
     gatoY=gatoY-10;
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
 }
 function moverAbajo(){
     gatoY=gatoY+10;
     limpiarCanva();
     graficarGato();
     graficarComida();
+    detectarColision();
+}
+
+function detectarColision(){
+    if(gatoX+ANCHO_GATO>comidaX &&
+        gatoX<comidaX+ANCHO_COMIDA && gatoY+ALTO_GATO>comidaY &&
+        gatoY<comidaY+ALTO_COMIDA){
+            alert("atrapado"); 
+        }
+}
+
+function detectarAtrapado(){
+    if(limonX+ANCHO_LIMON>personajeX && 
+        limonX<personajeX+ANCHO_PERSONAJE && limonY+ALTURA_LIMON>personajeY && 
+        limonY<personajeY+ALTURA_PERSONAJE){
+        //alert("atrapado");
+        aparecerLimon();
+        puntaje=puntaje+1;
+        mostrarEnSpan("txtPuntaje",puntaje);
+    }
+    if(puntaje===3){
+        velocidadCaida=150;
+        clearInterval(intervalo); // Borramos la velocidad 200
+        intervalo=setInterval(bajarLimon,velocidadCaida); //empiza la nueva velocidad asignada
+    } else if (puntaje===6){
+        velocidadCaida=100;
+        clearInterval(intervalo);
+        intervalo=setInterval(bajarLimon,velocidadCaida);
+    }else if (puntaje===10){
+        alert("ERES EL GANADOR, GENIAL :D");
+        clearInterval(intervalo);
+    }
 }
