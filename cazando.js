@@ -32,8 +32,7 @@ function graficarRectangulo (x, y, alto, ancho, color){
 function iniciarJuego(){
     graficarGato();
     graficarComida();
-    intervalo=setInterval(restarTiempo,intervaloTiempo);
-    
+    intervalo=setInterval(restarTiempo,intervaloTiempo); 
     
 }
 
@@ -79,6 +78,12 @@ function detectarColision(){
             puntaje=puntaje+1;
             mostrarEnSpan("puntos",puntaje);
         }
+    if(puntaje===6){
+        alert("ERES EL GANADOR, GENIAL :D");      
+        clearInterval(intervalo); // detenemos el setInterval
+
+    }
+    
 }
 
 function aparecerComida(){
@@ -89,5 +94,23 @@ function aparecerComida(){
 function restarTiempo(){
     tiempo=tiempo-1;
     mostrarEnSpan("tiempo",tiempo); 
-    detectarColision();     
+    detectarColision(); 
+    if(tiempo===0){
+        alert("GAME OVER :/");      
+        clearInterval(intervalo); // detenemos el setInterval
+
+    }    
+}
+
+function reiniciar(){
+    // poenmos las variables a su valor inicial
+    puntaje = 0;
+    tiempo = 10;
+    // pintamos en pantalla las variables en los span correspondientes
+    mostrarEnSpan("puntos", puntaje);
+    mostrarEnSpan("tiempo", tiempo);
+
+    //limpiamos cualquier intervalo viejo por seguridad antes de arrancar
+    clearInterval(intervalo);
+    iniciarJuego(); // invocamos a la funcion iniciar
 }
