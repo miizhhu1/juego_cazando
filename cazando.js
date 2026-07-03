@@ -11,6 +11,9 @@ let gatoY = (canvas.height / 2) - (ALTO_GATO / 2);
 let comidaX = canvas.width - ANCHO_COMIDA;;
 let comidaY = canvas.height - ALTO_COMIDA;
 let puntaje=0;
+let tiempo=10;
+let intervaloTiempo=3500;
+intervalo=0;
 
 function graficarGato(){
 
@@ -29,7 +32,9 @@ function graficarRectangulo (x, y, alto, ancho, color){
 function iniciarJuego(){
     graficarGato();
     graficarComida();
-    aparecerComida();
+    intervalo=setInterval(restarTiempo,intervaloTiempo);
+    
+    
 }
 
 function limpiarCanva(){
@@ -78,6 +83,11 @@ function detectarColision(){
 
 function aparecerComida(){
     comidaX=generarAleatorio(0,canvas.width-ALTO_COMIDA);
-    comidaY=0;
+    comidaY=generarAleatorio(0,canvas.height-ANCHO_COMIDA);
 }
 
+function restarTiempo(){
+    tiempo=tiempo-1;
+    mostrarEnSpan("tiempo",tiempo); 
+    detectarColision();     
+}
