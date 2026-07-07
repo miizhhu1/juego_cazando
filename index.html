@@ -1,37 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
+
 <head>
-  <title>Juego Cazando</title>
-  <link rel="stylesheet" href="cazando.css">
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Cazando Jade</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="cazando.css">
 
 </head>
+
 <body onload="iniciarJuego()">
 
-  <h1>Juego Cazando</h1>
-  <p>Autor: Mishell Yanez </p>
-  <canvas id="areaJuego" width="500" height="500"></canvas>
+<div class="contenedor">
 
-  <div class="controles">
-    <button onclick="moverArriba()">⬆</button>
-    <br>
-    <button onclick="moverIzquierda()">⬅</button>
-    <button onclick="moverAbajo()">⬇</button>
-    <button onclick="moverDerecha()">➡</button>
-  </div>
+    <div class="cabecera">
 
+        <h1>💎 Cazando Jade</h1>
 
-  <div class="panel">
-    <span>Puntos: <span id="puntos">0</span></span>
-    <span>Tiempo: <span id="tiempo">10</span></span>
-  </div>
-  
-  <div>
-    <button onclick="reiniciar()">Reinicar</button>
-  </div>
+        <p>
+            Encuentra el jade antes de que se acabe el tiempo.
+        </p>
 
-  <p id="mensaje"></p>
-  <script src="cazando.js"></script>
-  <script src="utils.js"></script>
+        <span>Desarrollado por Mishell Yanez</span>
+
+    </div>
+
+    <div class="panel">
+
+        <div class="info">
+
+            <span class="icono">⭐</span>
+
+            <div>
+
+                <small>PUNTOS</small>
+
+                <h2 id="puntos">0</h2>
+
+            </div>
+
+        </div>
+
+        <div class="info">
+
+            <span class="icono">⏳</span>
+
+            <div>
+
+                <small>TIEMPO</small>
+
+                <h2 id="tiempo">10</h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="juego">
+
+        <canvas id="areaJuego" width="500" height="500"></canvas>
+
+    </div>
+
+    <div class="controles">
+
+        <button onclick="moverArriba()">▲</button>
+
+        <div>
+
+            <button onclick="moverIzquierda()">◀</button>
+
+            <button onclick="moverAbajo()">▼</button>
+
+            <button onclick="moverDerecha()">▶</button>
+
+        </div>
+
+    </div>
+
+    <button class="reiniciar" onclick="reiniciar()">
+
+        🔄 Reiniciar partida
+
+    </button>
+
+    <p id="mensaje"></p>
+
+</div>
+
+<script src="cazando.js"></script>
+
+<script src="utils.js"></script>
 
 </body>
+
 </html>

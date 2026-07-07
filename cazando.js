@@ -36,9 +36,7 @@ function iniciarJuego(){
     
 }
 
-function limpiarCanva(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);   
-}
+
 
 function moverIzquierda(){
     gatoX=gatoX-10;
@@ -67,6 +65,9 @@ function moverAbajo(){
     graficarGato();
     graficarComida();
     detectarColision();
+}
+function limpiarCanva(){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);   
 }
 
 function detectarColision(){
