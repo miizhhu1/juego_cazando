@@ -6,27 +6,27 @@ const ANCHO_GATO = 200;
 const ALTO_COMIDA = 80;
 const ANCHO_COMIDA= 80;
 
-let gatoX = (canvas.width / 2) - (ANCHO_GATO / 2);
-let gatoY = (canvas.height / 2) - (ALTO_GATO / 2);
-let comidaX = canvas.width - ANCHO_COMIDA;;
-let comidaY = canvas.height - ALTO_COMIDA;
+let gatoX = 0;
+let gatoY = 0;
+let comidaX = 0;
+let comidaY = 0;
 let puntaje=0;
 let tiempo=10;
-let intervaloTiempo=3500;
-intervalo=0;
+let intervaloTiempo=1000;
+let intervalo=0;
 
 function graficarGato(){
 
-    graficarRectangulo(gatoX, gatoY, ANCHO_GATO, ALTO_GATO, '#f47fb9'); 
+    graficarRectangulo((canvas.width - ANCHO_GATO) / 2, (canvas.height - ALTO_GATO) / 2, ANCHO_GATO, ALTO_GATO, '#f47fb9'); 
 }
 
 function graficarComida(){
-    graficarRectangulo(comidaX, comidaY, ANCHO_COMIDA, ALTO_COMIDA, '#7fc9f4');
+    graficarRectangulo(canvas.width - ANCHO_COMIDA, canvas.height - ALTO_COMIDA, ANCHO_COMIDA, ALTO_COMIDA, '#7fc9f4');
 }
 
-function graficarRectangulo (x, y, alto, ancho, color){
+function graficarRectangulo (x, y, ancho, alto, color){
     ctx.fillStyle=color;
-    ctx.fillRect(x, y, alto, ancho);
+    ctx.fillRect(x, y, ancho, alto);
 }
 
 function iniciarJuego(){
@@ -113,4 +113,6 @@ function reiniciar(){
     //limpiamos cualquier intervalo viejo por seguridad antes de arrancar
     clearInterval(intervalo);
     iniciarJuego(); // invocamos a la funcion iniciar
+
+   
 }
